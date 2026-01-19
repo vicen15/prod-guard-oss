@@ -1,0 +1,14 @@
+﻿prod-guard-checks-free/.settings
+prod-guard-checks-free/target
+prod-guard-core/.settings
+prod-guard-core/target
+prod-guard-starter/.settings
+prod-guard-starter/target
+.settings/org.eclipse.m2e.core.prefs
+prod-guard-checks-free/.classpath
+prod-guard-checks-free/.project
+prod-guard-core/.classpath
+prod-guard-core/.project
+prod-guard-starter/.classpath
+prod-guard-starter/.project
+.project

@@ -1,0 +1,24 @@
+
+# example app - prod profile not active by default
+# set 'spring.profiles.active=prod' or 'prodguard.force=true' to run checks
+prodguard:
+  force: true
+
+  severities:
+    PG-001: ERROR
+    PG-002: INFO
+    PG-005: WARN
+    PG-006: DISABLED
+
+  report-only: true
+
+  trust-self-signed: true
+
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+    key-alias: prodguard		
