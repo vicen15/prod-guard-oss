@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
-import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -22,7 +21,7 @@ public class GracefulShutdownCheck implements ProdCheck {
 
                     Without it, deployments may abruptly terminate active
                     connections, causing errors for clients.
-                    """, LicenseLevel.FREE
+                    """
             );
 
     @Override

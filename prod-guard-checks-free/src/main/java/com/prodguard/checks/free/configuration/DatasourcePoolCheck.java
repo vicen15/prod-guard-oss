@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
-import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -15,7 +14,7 @@ public class DatasourcePoolCheck implements ProdCheck {
             new CheckDescriptor(
                     "PG-009",
                     "Datasource pool size configuration",
-                    Severity.WARN, null, LicenseLevel.FREE
+                    Severity.WARN, null
             );
 	
     @Override

@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
-import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -15,8 +14,7 @@ public class HttpsEnabledCheck implements ProdCheck {
             new CheckDescriptor(
                     "PG-005",
                     "HTTPS / TLS configuration",
-                    Severity.ERROR, null, LicenseLevel.FREE
-            );
+                    Severity.ERROR, null);
 
     @Override
     public Optional<CheckResult> check(ProdGuardContext ctx) {

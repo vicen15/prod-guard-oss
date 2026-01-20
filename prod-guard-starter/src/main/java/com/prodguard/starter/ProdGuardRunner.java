@@ -10,10 +10,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
 
 import com.prodguard.core.EffectiveSeverity;
-import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
-import com.prodguard.core.licensing.LicenseGate;
+import com.prodguard.licensing.LicenseGate;
 import com.prodguard.spring.SpringProdGuardContext;
 
 public class ProdGuardRunner implements ApplicationRunner {
@@ -79,34 +78,26 @@ public class ProdGuardRunner implements ApplicationRunner {
             checks.size()
         );
 
-        // ---------------------------------------------------------
-        // Allowed checks
-        // ---------------------------------------------------------        
-        var allowedChecks =
-        	    checks.stream()
-        	        .filter(check -> {
-        	        	LicenseLevel level = check.descriptor().licenseLevel();
-        	        	
-        	            boolean allowed = licenseGate.isAllowed(check.descriptor().licenseLevel());
+     // ---------------------------------------------------------
+     // Allowed checks
+     // ---------------------------------------------------------
+     var allowedChecks =
+         checks.stream()
+             .filter(check -> {
 
-        	            if (!allowed) {
-        	                if (level == LicenseLevel.PREMIUM) {
-        	                    log.warn(
-        	                        "[prod-guard] premium check {} present but no license",
-        	                        check.descriptor().code()
-        	                    );
-        	                } else {
-        	                    log.info(
-        	                        "[prod-guard] skipping {} check {}",
-        	                        level,
-        	                        check.descriptor().code()
-        	                    );
-        	                }
-        	            }
+                 String code = check.descriptor().code();
+                 boolean allowed = licenseGate.isAllowed(code);
 
-        	            return allowed;
-        	        })
-        	        .toList();
+                 if (!allowed) {
+                     log.warn(
+                         "[prod-guard] check {} present but not allowed by license",
+                         code
+                     );
+                 }
+
+                 return allowed;
+             })
+             .toList();
 
         if (allowedChecks.isEmpty()) {
             log.info(

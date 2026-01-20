@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
-import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -25,7 +24,7 @@ public class StacktraceExposureCheck implements ProdCheck {
 
                     This check verifies that stacktraces are never included in error
                     responses returned to clients.
-                    """, LicenseLevel.FREE
+                    """
             );
 
     @Override
