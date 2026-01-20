@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
 
 import com.prodguard.core.EffectiveSeverity;
+import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.licensing.LicenseGate;
@@ -84,22 +85,36 @@ public class ProdGuardRunner implements ApplicationRunner {
         var allowedChecks =
         	    checks.stream()
         	        .filter(check -> {
-        	            boolean allowed =
-									licenseGate.isAllowed(
-        	                    check.descriptor().licenseLevel()
-        	                );
+        	        	LicenseLevel level = check.descriptor().licenseLevel();
+        	        	
+        	            boolean allowed = licenseGate.isAllowed(check.descriptor().licenseLevel());
 
         	            if (!allowed) {
-        	                log.info(
-        	                    "[prod-guard] skipping {} check {}",
-        	                    check.descriptor().licenseLevel(),
-        	                    check.descriptor().code()
-        	                );
+        	                if (level == LicenseLevel.PREMIUM) {
+        	                    log.warn(
+        	                        "[prod-guard] premium check {} present but no license",
+        	                        check.descriptor().code()
+        	                    );
+        	                } else {
+        	                    log.info(
+        	                        "[prod-guard] skipping {} check {}",
+        	                        level,
+        	                        check.descriptor().code()
+        	                    );
+        	                }
         	            }
 
         	            return allowed;
         	        })
         	        .toList();
+
+        if (allowedChecks.isEmpty()) {
+            log.info(
+                "[prod-guard] no allowed checks {}",
+                checks.size()
+            );
+            return;
+        }        
         
         log.info(
         	    "[prod-guard] skipped checks {}",
