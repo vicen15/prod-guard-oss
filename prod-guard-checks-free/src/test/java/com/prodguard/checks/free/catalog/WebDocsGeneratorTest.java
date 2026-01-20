@@ -100,7 +100,7 @@ public class WebDocsGeneratorTest {
         		        d.code(),
         		        d.name(),
         		        d.severity(),
-        		        d.tier()
+        		        "FREE"
         		    ));
         }
 
@@ -140,7 +140,7 @@ public class WebDocsGeneratorTest {
                 d.code(),
                 d.name(),
                 d.severity(),
-                d.tier(),
+                "FREE",
                 d.hasLongDescription()
                     ? d.longDescription().replace("\n", "<br/>")
                     : "<em>No extended description available.</em>"

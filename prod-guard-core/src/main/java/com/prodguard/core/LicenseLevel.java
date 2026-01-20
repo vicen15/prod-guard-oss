@@ -1,6 +1,6 @@
 package com.prodguard.core;
 
-public enum CheckTier {
-    CORE,
+public enum LicenseLevel {
+    FREE,
     PREMIUM
 }

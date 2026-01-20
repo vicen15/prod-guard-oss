@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import com.prodguard.checks.free.support.MockProdGuardContext;
 
+
+
 class SecurityHeadersCheckTest {
 
     private final SecurityHeadersCheck check = new SecurityHeadersCheck();

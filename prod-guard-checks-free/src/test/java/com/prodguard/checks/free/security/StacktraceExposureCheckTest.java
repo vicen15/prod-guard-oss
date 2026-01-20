@@ -5,8 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.prodguard.checks.free.security.StacktraceExposureCheck;
 import com.prodguard.checks.free.support.MockProdGuardContext;
+
+
 
 class StacktraceExposureCheckTest {
 

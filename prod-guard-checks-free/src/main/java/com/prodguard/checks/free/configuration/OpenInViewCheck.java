@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -21,7 +22,8 @@ public class OpenInViewCheck implements ProdCheck {
 
                     While convenient during development, it can hide performance
                     issues and lead to N+1 query problems in production.
-                    """
+                    """,
+                    LicenseLevel.FREE
             );
 
     @Override
@@ -40,4 +42,12 @@ public class OpenInViewCheck implements ProdCheck {
         }
 
         return Optional.empty();
-    }}
+    }
+
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
+    }
+}
+
+	

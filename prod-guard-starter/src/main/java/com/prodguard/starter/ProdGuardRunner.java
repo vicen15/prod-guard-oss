@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import com.prodguard.core.EffectiveSeverity;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
+import com.prodguard.core.licensing.LicenseGate;
 import com.prodguard.spring.SpringProdGuardContext;
 
 public class ProdGuardRunner implements ApplicationRunner {
@@ -23,17 +24,20 @@ public class ProdGuardRunner implements ApplicationRunner {
     private final List<ProdCheck> checks;
     private final ApplicationContext applicationContext;
     private final SeverityResolver severityResolver;
-
+    private final LicenseGate licenseGate;
+    
     public ProdGuardRunner(
             List<ProdCheck> checks,
             ApplicationContext applicationContext,
             SeverityResolver severityResolver,
-            ProdGuardProperties properties
+            ProdGuardProperties properties,
+            LicenseGate licenseGate
     ) {
         this.checks = checks;
         this.applicationContext = applicationContext;
         this.severityResolver = severityResolver;
         this.reportOnly = properties.isReportOnly();
+        this.licenseGate = licenseGate;
     }
 
     @Override
@@ -70,18 +74,53 @@ public class ProdGuardRunner implements ApplicationRunner {
         // Start logging
         // ---------------------------------------------------------
         log.info(
-            "[prod-guard] executing {} checks",
+            "[prod-guard] discovered {} checks",
             checks.size()
         );
 
         // ---------------------------------------------------------
+        // Allowed checks
+        // ---------------------------------------------------------        
+        var allowedChecks =
+        	    checks.stream()
+        	        .filter(check -> {
+        	            boolean allowed =
+									licenseGate.isAllowed(
+        	                    check.descriptor().licenseLevel()
+        	                );
+
+        	            if (!allowed) {
+        	                log.info(
+        	                    "[prod-guard] skipping {} check {}",
+        	                    check.descriptor().licenseLevel(),
+        	                    check.descriptor().code()
+        	                );
+        	            }
+
+        	            return allowed;
+        	        })
+        	        .toList();
+        
+        log.info(
+        	    "[prod-guard] skipped checks {}",
+        	    checks.size() - allowedChecks.size()
+        	);
+        
+        log.info(
+        	    "[prod-guard] executing {} checks",
+        	    allowedChecks.size()
+        	);
+        
+         
+        
+        // ---------------------------------------------------------
         // Execute checks
         // ---------------------------------------------------------
         var results =
-            checks.stream()
-                .map(c -> c.check(ctx))
-                .flatMap(Optional::stream)
-                .toList();
+        	    allowedChecks.stream()
+        	        .map(check -> check.check(ctx))
+        	        .flatMap(Optional::stream)
+        	        .toList();
 
         // ---------------------------------------------------------
         // No findings

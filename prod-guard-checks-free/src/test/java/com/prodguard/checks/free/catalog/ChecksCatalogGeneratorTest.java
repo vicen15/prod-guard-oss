@@ -68,7 +68,7 @@ public class ChecksCatalogGeneratorTest {
               .append(d.code()).append(" | ")
               .append(d.name()).append(" | ")
               .append(d.severity()).append(" | ")
-              .append(d.tier()).append(" |\n");
+              .append("FREE").append(" |\n");
         }
 
         md.append("\n");
@@ -94,7 +94,7 @@ public class ChecksCatalogGeneratorTest {
               .append(d.code()).append(" | ")
               .append(d.name()).append(" | ")
               .append(d.severity()).append(" | ")
-              .append(d.tier()).append(" |\n");
+              .append("FREE").append(" |\n");
         }
 
         md.append("\n---\n\n");

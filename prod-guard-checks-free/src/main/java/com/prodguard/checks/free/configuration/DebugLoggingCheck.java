@@ -1,7 +1,13 @@
 package com.prodguard.checks.free.configuration;
 
-import com.prodguard.core.*;
 import java.util.Optional;
+
+import com.prodguard.core.CheckDescriptor;
+import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
+import com.prodguard.core.ProdCheck;
+import com.prodguard.core.ProdGuardContext;
+import com.prodguard.core.Severity;
 
 public class DebugLoggingCheck implements ProdCheck {
 
@@ -9,7 +15,7 @@ public class DebugLoggingCheck implements ProdCheck {
             new CheckDescriptor(
                     "PG-001",
                     "Root logging level configuration",
-                    Severity.ERROR
+                    Severity.ERROR, null, LicenseLevel.FREE
             );
 	
     @Override
@@ -23,5 +29,10 @@ public class DebugLoggingCheck implements ProdCheck {
             ));
         }
         return Optional.empty();
+    }
+    
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
     }
 }

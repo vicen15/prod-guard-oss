@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import com.prodguard.checks.free.runtime.HeapSizeCheck;
 import com.prodguard.checks.free.support.MockProdGuardContext;
 
 class HeapSizeCheckTest {

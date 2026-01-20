@@ -1,11 +1,11 @@
 package com.prodguard.checks.free.security;
 
-import com.prodguard.checks.free.security.ActuatorExposureCheck;
-import com.prodguard.checks.free.support.MockProdGuardContext;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.prodguard.checks.free.support.MockProdGuardContext;
 
 class ActuatorExposureCheckTest {
 

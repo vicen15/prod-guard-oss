@@ -1,7 +1,13 @@
 package com.prodguard.checks.free.security;
 
-import com.prodguard.core.*;
 import java.util.Optional;
+
+import com.prodguard.core.CheckDescriptor;
+import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
+import com.prodguard.core.ProdCheck;
+import com.prodguard.core.ProdGuardContext;
+import com.prodguard.core.Severity;
 
 public class CsrfDisabledCheck implements ProdCheck {
 
@@ -9,7 +15,7 @@ public class CsrfDisabledCheck implements ProdCheck {
             new CheckDescriptor(
                     "PG-007",
                     "CSRF protection configuration review",
-                    Severity.WARN);	
+                    Severity.WARN, null, LicenseLevel.FREE);	
                     
 	
     @Override
@@ -21,4 +27,9 @@ public class CsrfDisabledCheck implements ProdCheck {
                 "Verify CSRF is enabled where applicable (APIs may disable it with care)"
         ));
     }
+    
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
+    }    
 }

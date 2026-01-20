@@ -1,7 +1,13 @@
 package com.prodguard.checks.free.runtime;
 
-import com.prodguard.core.*;
 import java.util.Optional;
+
+import com.prodguard.core.CheckDescriptor;
+import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
+import com.prodguard.core.ProdCheck;
+import com.prodguard.core.ProdGuardContext;
+import com.prodguard.core.Severity;
 
 public class HeapSizeCheck implements ProdCheck {
 
@@ -9,7 +15,7 @@ public class HeapSizeCheck implements ProdCheck {
 	        new CheckDescriptor(
 	                "PG-008",
 	                "JVM maximum heap size configuration",
-	                Severity.WARN
+	                Severity.WARN, null, LicenseLevel.FREE
 	        );
 
 	
@@ -25,4 +31,9 @@ public class HeapSizeCheck implements ProdCheck {
         }
         return Optional.empty();
     }
+    
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
+    }    
 }

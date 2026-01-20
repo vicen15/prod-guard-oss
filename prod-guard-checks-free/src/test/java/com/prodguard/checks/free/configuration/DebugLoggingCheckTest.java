@@ -1,14 +1,15 @@
 package com.prodguard.checks.free.configuration;
 
-import com.prodguard.checks.free.configuration.DebugLoggingCheck;
-import com.prodguard.checks.free.support.MockProdGuardContext;
-import com.prodguard.core.CheckResult;
-import com.prodguard.core.Severity;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import com.prodguard.checks.free.support.MockProdGuardContext;
+import com.prodguard.core.CheckResult;
+import com.prodguard.core.Severity;
 
 class DebugLoggingCheckTest {
 

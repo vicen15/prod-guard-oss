@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.prodguard.core.CheckDescriptor;
 import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.core.Severity;
@@ -21,7 +22,7 @@ public class CorsWildcardCheck implements ProdCheck {
 
                     Production environments should explicitly restrict allowed
                     origins whenever possible.
-                    """
+                    """, LicenseLevel.FREE
             );
 
     @Override
@@ -39,4 +40,9 @@ public class CorsWildcardCheck implements ProdCheck {
 
         return Optional.empty();
     }
+    
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
+    }    
 }

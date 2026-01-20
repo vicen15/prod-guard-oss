@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-import com.prodguard.core.CheckResult;
 import com.prodguard.checks.free.support.MockProdGuardContext;
+import com.prodguard.core.CheckResult;
 
 class GracefulShutdownCheckTest {
 

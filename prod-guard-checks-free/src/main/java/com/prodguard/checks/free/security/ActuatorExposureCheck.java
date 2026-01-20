@@ -1,7 +1,13 @@
 package com.prodguard.checks.free.security;
 
-import com.prodguard.core.*;
 import java.util.Optional;
+
+import com.prodguard.core.CheckDescriptor;
+import com.prodguard.core.CheckResult;
+import com.prodguard.core.LicenseLevel;
+import com.prodguard.core.ProdCheck;
+import com.prodguard.core.ProdGuardContext;
+import com.prodguard.core.Severity;
 
 public class ActuatorExposureCheck implements ProdCheck {
 
@@ -9,7 +15,7 @@ public class ActuatorExposureCheck implements ProdCheck {
             new CheckDescriptor(
                     "PG-004",
                     "Spring Boot Actuator endpoint exposure",
-                    Severity.WARN);	
+                    Severity.WARN, null, LicenseLevel.FREE);	
 
 	
     @Override
@@ -24,4 +30,9 @@ public class ActuatorExposureCheck implements ProdCheck {
         }
         return Optional.empty();
     }
+    
+    @Override
+    public CheckDescriptor descriptor() {
+        return DESCRIPTOR;
+    }    
 }
