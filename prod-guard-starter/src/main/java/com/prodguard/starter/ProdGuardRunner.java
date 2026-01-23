@@ -90,7 +90,7 @@ public class ProdGuardRunner implements ApplicationRunner {
 
                  if (!allowed) {
                      log.warn(
-                         "[prod-guard] check {} present but not allowed by license",
+                    		 "[prod-guard] premium check {} present but no valid license found",
                          code
                      );
                  }

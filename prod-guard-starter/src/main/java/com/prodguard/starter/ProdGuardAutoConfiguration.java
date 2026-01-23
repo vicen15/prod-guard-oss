@@ -1,18 +1,23 @@
 package com.prodguard.starter;
 
+import java.nio.file.Path;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.prodguard.core.ProdCheck;
+import com.prodguard.licensing.Ed25519SignatureVerifier;
 import com.prodguard.licensing.LicenseContext;
 import com.prodguard.licensing.LicenseGate;
 import com.prodguard.licensing.LicenseVerifier;
 import com.prodguard.licensing.NoopLicenseVerifier;
+import com.prodguard.licensing.SignatureVerifier;
+import com.prodguard.licensing.SignedFileLicenseVerifier;
 
 @AutoConfiguration
 @EnableConfigurationProperties(ProdGuardProperties.class)
@@ -45,18 +50,34 @@ public class ProdGuardAutoConfiguration {
     }
     
     @Bean
+    @ConditionalOnProperty(
+        prefix = "prodguard.license",
+        name = "path"
+    )
+    LicenseVerifier signedFileLicenseVerifier(
+            ProdGuardProperties properties,
+            SignatureVerifier signatureVerifier
+    ) {
+        return new SignedFileLicenseVerifier(
+            Path.of(properties.getLicense().getPath()),
+            signatureVerifier
+        );
+    }
+    
+    
+    @Bean
     @ConditionalOnMissingBean
-    LicenseVerifier licenseVerifier() {
+    LicenseVerifier noopLicenseVerifier() {
         return new NoopLicenseVerifier();
     }
 
-//    @Bean
-//    LicenseGate licenseGate(LicenseVerifier verifier) {
-//        LicenseContext ctx = verifier.verify();
-//        return level -> ctx.valid() && ctx.level().ordinal() >= level.ordinal();
-//    }    
+    @Bean
+    @ConditionalOnMissingBean
+    SignatureVerifier signatureVerifier() {
+        return new Ed25519SignatureVerifier();
+    }
     
-    
+
     @Bean
     LicenseGate licenseGate(LicenseVerifier verifier) {
 
@@ -70,5 +91,4 @@ public class ProdGuardAutoConfiguration {
             return ctx.valid(); // PREMIUM → license required
         };
     }
-    
 }

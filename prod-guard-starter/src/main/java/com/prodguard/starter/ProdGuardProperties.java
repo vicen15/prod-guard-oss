@@ -12,8 +12,17 @@ public class ProdGuardProperties {
 	private boolean reportOnly = false;
 	
 	private boolean trustSelfSigned = false;
+    
+	private final License license = new License();
 	
-	public boolean isReportOnly() {
+    /**
+     * Key: check code (e.g. PG-005)
+     * Value: severity override
+     */
+    private Map<String, EffectiveSeverity> severities = new HashMap<>();
+
+
+    public boolean isReportOnly() {
         return reportOnly;
     }
 
@@ -29,11 +38,25 @@ public class ProdGuardProperties {
 	    this.trustSelfSigned = trustSelfSigned;
 	}    
     
-    /**
-     * Key: check code (e.g. PG-005)
-     * Value: severity override
-     */
-    private Map<String, EffectiveSeverity> severities = new HashMap<>();
+	public License getLicense() {
+        return license;
+    }
+
+    public static final class License {
+
+        /**
+         * Path to the license file (prodguard.lic)
+         */
+        private String path;
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+    }	
 
     public Map<String, EffectiveSeverity> getSeverities() {
         return severities;
