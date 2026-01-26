@@ -83,12 +83,22 @@ public class ProdGuardAutoConfiguration {
 
         LicenseContext ctx = verifier.verify();
 
-        return checkCode -> {
-            if (!checkCode.startsWith(PREMIUM_CHECKS_PREFIX)) {
-                return true; // FREE check
+        return new LicenseGate() {
+
+            @Override
+            public boolean isAllowed(String checkCode) {
+                if (!checkCode.startsWith(PREMIUM_CHECKS_PREFIX)) {
+                    return true; // FREE check
+                }
+                return ctx.valid(); // PREMIUM requires license
             }
 
-            return ctx.valid(); // PREMIUM → license required
+            @Override
+            public LicenseContext context() {
+                return ctx;
+            }
         };
     }
+
+    
 }

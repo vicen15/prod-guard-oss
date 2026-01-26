@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import com.prodguard.core.EffectiveSeverity;
 import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
+import com.prodguard.licensing.LicenseContext;
 import com.prodguard.licensing.LicenseGate;
 import com.prodguard.spring.SpringProdGuardContext;
 
@@ -70,6 +71,17 @@ public class ProdGuardRunner implements ApplicationRunner {
             return;
         }
 
+        LicenseContext licenseContext = licenseGate.context();
+
+        if (licenseContext.valid()) {
+            log.info(
+                "[prod-guard] premium license validated for {}",
+                licenseContext.licensee()
+            );
+        } else {
+            log.info("[prod-guard] running with FREE license");
+        }        
+        
         // ---------------------------------------------------------
         // Start logging
         // ---------------------------------------------------------
