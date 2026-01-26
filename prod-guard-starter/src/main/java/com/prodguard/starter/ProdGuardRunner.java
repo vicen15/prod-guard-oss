@@ -1,5 +1,6 @@
 package com.prodguard.starter;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,9 +78,26 @@ public class ProdGuardRunner implements ApplicationRunner {
             return;
         }
         
+        
         LicenseContext licenseContext = licenseVerifier.verify();
 
-        if (licenseContext.valid()) {
+        if (!licenseContext.valid()) {
+
+            if (licenseContext.expiresAt() != null &&
+                licenseContext.expiresAt().isBefore(LocalDate.now())) {
+
+                log.warn(
+                    "[prod-guard] license expired on {}{}",
+                    licenseContext.expiresAt(),
+                    licenseContext.licensee() != null
+                        ? " (licensee: " + licenseContext.licensee() + ")"
+                        : ""
+                );
+            }
+            log.info("[prod-guard] running with FREE license");
+
+        } else {
+
             long days = licenseContext.daysUntilExpiration();
 
             if (days <= LICENSE_WARN_DAYS) {
@@ -96,10 +114,8 @@ public class ProdGuardRunner implements ApplicationRunner {
                     licenseContext.licensee()
                 );
             }
-        } else {
-            log.info("[prod-guard] running with FREE license");
-        }      
-        
+        }
+
         // ---------------------------------------------------------
         // Start logging
         // ---------------------------------------------------------
