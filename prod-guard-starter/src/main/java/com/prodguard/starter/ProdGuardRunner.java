@@ -14,6 +14,7 @@ import com.prodguard.core.ProdCheck;
 import com.prodguard.core.ProdGuardContext;
 import com.prodguard.licensing.LicenseContext;
 import com.prodguard.licensing.LicenseGate;
+import com.prodguard.licensing.LicenseVerifier;
 import com.prodguard.spring.SpringProdGuardContext;
 
 public class ProdGuardRunner implements ApplicationRunner {
@@ -26,19 +27,24 @@ public class ProdGuardRunner implements ApplicationRunner {
     private final ApplicationContext applicationContext;
     private final SeverityResolver severityResolver;
     private final LicenseGate licenseGate;
+    private final LicenseVerifier licenseVerifier;
+
+    private static final long LICENSE_WARN_DAYS = 30;
     
     public ProdGuardRunner(
             List<ProdCheck> checks,
             ApplicationContext applicationContext,
             SeverityResolver severityResolver,
             ProdGuardProperties properties,
-            LicenseGate licenseGate
+            LicenseGate licenseGate,
+            LicenseVerifier licenseVerifier
     ) {
         this.checks = checks;
         this.applicationContext = applicationContext;
         this.severityResolver = severityResolver;
         this.reportOnly = properties.isReportOnly();
         this.licenseGate = licenseGate;
+        this.licenseVerifier = licenseVerifier;        
     }
 
     @Override
@@ -70,17 +76,29 @@ public class ProdGuardRunner implements ApplicationRunner {
             );
             return;
         }
-
-        LicenseContext licenseContext = licenseGate.context();
+        
+        LicenseContext licenseContext = licenseVerifier.verify();
 
         if (licenseContext.valid()) {
-            log.info(
-                "[prod-guard] premium license validated for {}",
-                licenseContext.licensee()
-            );
+            long days = licenseContext.daysUntilExpiration();
+
+            if (days <= LICENSE_WARN_DAYS) {
+                log.warn(
+                    "[prod-guard] License expires in {} days{}",
+                    days,
+                    licenseContext.licensee() != null
+                        ? " (licensee: " + licenseContext.licensee() + ")"
+                        : ""
+                );
+            } else {
+                log.info(
+                    "[prod-guard] premium license validated for {}",
+                    licenseContext.licensee()
+                );
+            }
         } else {
             log.info("[prod-guard] running with FREE license");
-        }        
+        }      
         
         // ---------------------------------------------------------
         // Start logging
@@ -128,8 +146,6 @@ public class ProdGuardRunner implements ApplicationRunner {
         	    "[prod-guard] executing {} checks",
         	    allowedChecks.size()
         	);
-        
-         
         
         // ---------------------------------------------------------
         // Execute checks

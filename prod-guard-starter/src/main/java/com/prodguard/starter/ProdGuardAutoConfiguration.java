@@ -38,14 +38,16 @@ public class ProdGuardAutoConfiguration {
             ApplicationContext applicationContext,
             SeverityResolver severityResolver,
             ProdGuardProperties properties,
-            LicenseGate licenseGate
+            LicenseGate licenseGate,
+            LicenseVerifier licenseVerifier
     ) {
         return new ProdGuardRunner(
             checks,
             applicationContext,
             severityResolver,
             properties,
-            licenseGate
+            licenseGate,
+            licenseVerifier
         );
     }
     
