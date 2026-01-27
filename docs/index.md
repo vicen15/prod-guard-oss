@@ -1,236 +1,244 @@
-prod-guard
+# prod-guard
 
-Production readiness & security guardrails for Spring Boot
+**Production readiness & security guardrails for Spring Boot**
 
-Overview
+---
 
-prod-guard is a lightweight, offline-first guardrail that validates whether a Spring Boot application is correctly configured to run in production.
+## Overview
 
-It performs a set of deterministic checks at application startup, detecting insecure defaults, missing production hardening, and misconfigurations before the application starts serving traffic.
+**prod-guard** is a lightweight, offline-first guardrail that validates whether a
+**Spring Boot application is correctly configured to run in production**.
+
+It performs a set of **deterministic checks at application startup**, detecting:
+
+- Insecure defaults
+- Missing production hardening
+- Configuration mistakes
+
+**Before the application starts serving traffic.**
 
 prod-guard is designed to be:
 
-Deterministic
+- ✅ Deterministic
+- 🔒 Offline
+- 🧩 Non-intrusive
+- ⚡ Easy to adopt
+- 🏛️ Suitable for regulated environments
 
-Offline
+---
 
-Non-intrusive
+## 📚 Table of Contents
 
-Easy to adopt
+- What is prod-guard
+- Why prod-guard exists
+- What prod-guard is not
+- How prod-guard works
+- Editions: Free vs Premium
+- Design principles
+- Typical use cases
+- Integration overview
+- Documentation structure
 
-Suitable for regulated environments
+---
 
-Table of Contents
+## What is prod-guard
 
-What is prod-guard
+prod-guard is a **startup-time validation framework** for Spring Boot applications.
 
-Why prod-guard exists
+It inspects the runtime environment and configuration to ensure that the
+application adheres to **production-grade standards** in terms of:
 
-What prod-guard is not
-
-How prod-guard works
-
-Editions: Free vs Premium
-
-Design principles
-
-Typical use cases
-
-Integration overview
-
-Documentation structure
-
-What is prod-guard
-
-prod-guard is a startup-time validation framework for Spring Boot applications.
-
-It inspects the runtime environment and configuration to ensure that the application adheres to production-grade standards in terms of stability, performance, and security.
+- Stability
+- Performance
+- Security
 
 Checks are executed:
 
-At application startup
+- At **application startup**
+- **Inside the application JVM**
+- With **no external dependencies**
+- With **zero runtime overhead**
 
-Inside the application JVM
+---
 
-Without external dependencies
-
-Without runtime overhead
-
-Why prod-guard exists
+## Why prod-guard exists
 
 Modern Spring Boot applications often reach production with:
 
-Default configurations unintentionally left enabled
+- Default configurations unintentionally left enabled
+- Missing HTTP security headers
+- Unsafe persistence or thread-pool defaults
+- Production-only concerns overlooked
+- “Temporary” configurations becoming permanent
 
-Missing HTTP security headers
+These issues are rarely detected by monitoring tools, because **monitoring focuses on runtime behavior**, not startup correctness.
 
-Unsafe persistence or thread pool defaults
+**prod-guard addresses this gap.**
 
-Production-only concerns overlooked
+It answers a simple but critical question:
 
-“Temporary” configurations becoming permanent
+> **Is this application actually safe and ready to run in production?**
 
-These issues are rarely detected by monitoring tools, because monitoring focuses on runtime behavior, not startup correctness.
+---
 
-prod-guard addresses this gap.
+## What prod-guard is not
 
-It answers the question:
+prod-guard intentionally does **not** attempt to replace existing security or observability tools.
 
-Is this application actually safe and ready to run in production?
+It is **not**:
 
-What prod-guard is not
+- A monitoring or observability platform
+- A vulnerability scanner
+- A DAST or SAST tool
+- A runtime intrusion detection system
+- A cloud security posture manager (CSPM)
 
-prod-guard intentionally does not attempt to replace existing security or observability tools.
+prod-guard does **not** inspect traffic, analyze requests, or collect metrics.
 
-It is not:
+It validates **configuration correctness**, not runtime behavior.
 
-A monitoring or observability platform
+---
 
-A vulnerability scanner
-
-A DAST or SAST tool
-
-A runtime intrusion detection system
-
-A cloud security posture manager (CSPM)
-
-prod-guard does not inspect traffic, analyze requests, or collect metrics.
-
-It validates configuration correctness, not behavior.
-
-How prod-guard works
+## How prod-guard works
 
 At startup, prod-guard performs the following steps:
 
-Discovers all available checks on the classpath
-
-Evaluates each check against the current runtime
-
-Aggregates results
-
-Applies configured enforcement mode
-
-Logs or blocks application startup
+1. Discovers all available checks on the classpath
+2. Evaluates each check against the current runtime
+3. Aggregates results
+4. Applies the configured enforcement mode
+5. Logs findings or blocks application startup
 
 Each check is:
 
-Stateless
+- Stateless
+- Fast
+- Deterministic
+- Side-effect free
 
-Fast
+There are **no background threads**, **no network calls**, and **no agents**.
 
-Deterministic
+---
 
-Side-effect free
-
-There are no background threads, no network calls, and no agents.
-
-Editions: Free vs Premium
+## Editions: Free vs Premium
 
 prod-guard is offered in two editions.
 
-Free Edition
+---
 
-The Free edition focuses on production hygiene and best practices.
+### Free Edition
+
+The **Free edition** focuses on production hygiene and best practices.
 
 Examples of checks include:
 
-Graceful shutdown configuration
-
-JPA Open Session In View
-
-Thread pool sizing
-
-HTTP request timeouts
-
-CSRF configuration sanity
-
-General Spring Boot production defaults
+- Graceful shutdown configuration
+- JPA Open Session In View
+- Thread pool sizing
+- HTTP request timeouts
+- CSRF configuration sanity
+- General Spring Boot production defaults
 
 The Free edition is suitable for:
 
-Internal services
+- Internal services
+- Early-stage production environments
+- Non-regulated workloads
 
-Early-stage production environments
+---
 
-Non-regulated workloads
+### Premium Edition
 
-Premium Edition
-
-The Premium edition focuses on security hardening and enforcement.
+The **Premium edition** focuses on **security hardening and enforcement**.
 
 It introduces checks such as:
 
-HTTPS enforcement
+- HTTPS enforcement
+- HSTS configuration
+- Content Security Policy
+- Clickjacking protection
+- Missing or weak HTTP security headers
+- Blocking-mode enforcement
 
-HSTS configuration
+Premium checks:
 
-Content Security Policy
+- Require a **valid offline license**
+- Are **never executed without one**
+- Do not introduce any network dependency
 
-Clickjacking protection
+---
 
-Missing or weak HTTP security headers
-
-Blocking mode enforcement
-
-Premium checks require a valid offline license and will not execute without one.
-
-Design principles
+## Design principles
 
 prod-guard is built around a small set of strict principles.
 
-Deterministic by design
+### Deterministic by design
 
-The same configuration always produces the same outcome.
+The same configuration always produces the same outcome.  
 No heuristics. No probabilistic checks.
 
-Offline-first
+### Offline-first
 
-No SaaS dependency
+- No SaaS dependency
+- No outbound connections
+- License verification is fully offline
 
-No outbound connections
+### Fail fast
 
-License verification is fully offline
+Issues are detected **before** the application starts serving traffic.
 
-Fail fast
+### Explicitness over magic
 
-Issues are detected before the application starts serving traffic.
+- Every check has a unique code
+- Every result is explicit
+- Every behavior is configurable
 
-Explicitness over magic
+---
 
-Every check has a unique code
+## Typical use cases
 
-Every result is explicit
+### Preventing insecure production deployments
 
-Every behavior is configurable
+Detect missing HTTPS enforcement, absent security headers, and unsafe defaults
+before traffic is accepted.
 
-Typical use cases
-Preventing insecure production deployments
-
-Detect missing HTTPS enforcement, absent security headers, and unsafe defaults before traffic is accepted.
-
-CI/CD enforcement
+### CI/CD enforcement
 
 Run prod-guard in a pipeline and fail builds when blocking issues are detected.
 
-Regulated environments
+### Regulated environments
 
-Offline verification makes prod-guard suitable for restricted environments.
+Offline verification makes prod-guard suitable for restricted or air-gapped environments.
 
-Large Spring Boot estates
+### Large Spring Boot estates
 
 Ensure consistent production standards across many services.
 
-Integration overview
+---
 
-prod-guard is delivered as a Spring Boot starter.
+## Integration overview
+
+prod-guard is delivered as a **Spring Boot starter**.
 
 Integration requires:
 
-Adding a dependency
+- Adding a dependency
+- (Optional) Providing a license file
+- Minimal configuration
 
-(Optional) Providing a license file
+**No application code changes are required.**
 
-Minimal configuration
+---
 
-No application code changes are required.
+## 📖 Documentation structure
 
+- **Getting Started** – quick adoption guide
+- **Checks Reference** – full list of checks and tiers
+- **Licensing** – Free vs Premium model
+- **Configuration** – YAML / properties reference
+- **Architecture** – internal design and flow
+- **FAQ** – common questions and troubleshooting
+
+---
+
+➡ Start with **Getting Started** to integrate prod-guard in minutes.
