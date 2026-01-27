@@ -55,7 +55,7 @@ The fastest way to understand and adopt prod-guard is through the documentation.
 👉 **Start here:**
 
 📘 **Documentation index**
-`[docs/index.md](https://github.com/vicen15/prod-guard-oss/blob/main/docs/index.md)`
+[index](docs/index.md)
 
 ---
 
