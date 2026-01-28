@@ -286,6 +286,91 @@ Every decision is logged explicitly and auditable.
 
 <hr/>
 
+## Execution Model
+
+prod-guard executes validation as part of the **startup lifecycle**, but not all checks run
+at the same moment.
+
+To reflect this accurately, prod-guard uses a **two-phase execution model**.
+
+---
+
+## Phase 1 — Pre-Start Validation (Static Checks)
+
+**When it runs**
+
+- During application startup
+- Before the application is considered ready to serve traffic
+
+**What runs**
+
+- Configuration-based checks
+- Environment validation
+- JVM, datasource, and framework defaults
+
+**Examples**
+
+- JPA Open Session In View
+- Graceful shutdown configuration
+- Datasource pool sizing
+- Logging configuration
+- HTTP timeouts
+
+**Characteristics**
+
+- No network calls
+- No runtime dependencies
+- Extremely fast
+- Safe in all environments
+
+This phase applies to **both FREE and PREMIUM editions**.
+
+---
+
+## Phase 2 — Post-Start Runtime Validation (Effective Checks)
+
+Some production and security guarantees **cannot be validated statically**.
+
+For example:
+
+- Are HTTPS redirects effective?
+- Are security headers actually present after proxies and filters?
+- Is CSP enforced or report-only?
+- Are cookies effectively marked Secure / HttpOnly?
+
+These require observing the **effective runtime behavior**.
+
+**When it runs**
+
+- Immediately after the applicattion is started
+- As part of the same startup lifecycle
+- Before prod-guard completes execution
+
+**What runs**
+
+- Runtime HTTP/HTTPS checks
+- Effective security header validation
+- TLS and redirect enforcement
+
+**Examples**
+
+- Effective HTTPS enforcement
+- HSTS configuration
+- CSP enforcement
+- Clickjacking protection
+- Cookie security flags
+
+**Characteristics**
+
+- Performs real HTTP/HTTPS requests against localhost
+- Requires the server to be running
+- Executes synchronously
+- No background threads
+
+This phase is **PREMIUM-only**.
+
+---
+
 <h2>Comparison with Traditional Monitoring</h2>
 
 <table>
