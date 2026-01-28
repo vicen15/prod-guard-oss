@@ -65,6 +65,181 @@ server.error.include-stacktrace=never
 
 ---
 
+### PG-004 — Spring Boot Actuator endpoint exposure
+**Category:** Observability / Security  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+Actuator endpoints are exposed with permissive defaults.
+
+#### Why it matters
+Unrestricted actuator endpoints may leak sensitive runtime information.
+
+#### Remediation
+```properties
+management.endpoints.web.exposure.include=health,info
+management.endpoint.health.show-details=never
+```
+
+### PG-005 — HTTPS / TLS configuration
+**Category:** Security  
+**Default Severity:** ERROR  
+**Tier:** FREE
+
+#### What it checks
+TLS/HTTPS is not configured or insecure TLS settings are detected.
+
+#### Why it matters
+Unencrypted traffic exposes credentials and data in transit.
+
+#### Remediation
+```properties
+server.ssl.key-store=classpath:keystore.jks
+server.ssl.key-store-password=secret
+server.port=8443
+```
+
+### PG-006 — HTTP security headers infrastructure
+**Category:** Security / HTTP  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+Detects missing common security headers infrastructure.
+
+#### Why it matters
+Missing headers make the app more vulnerable to clickjacking, MIME sniffing, and referrer leakage.
+
+#### Remediation
+Configure strict security headers in framework or proxy.
+
+### PG-007 — CSRF protection configuration review
+**Category:** Security / Web  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+CSRF protection is disabled globally or for endpoints that should be protected.
+
+#### Why it matters
+CSRF vulnerabilities allow attackers to execute actions on behalf of authenticated users.
+
+#### Remediation
+Enable CSRF or explicitly document safe exceptions.
+
+### PG-008 — JVM maximum heap size configuration
+**Category:** Runtime / JVM  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+JVM maximum heap size not tuned in production.
+
+#### Why it matters
+Can cause OOM or poor GC behavior.
+
+#### Remediation
+
+``` bash
+JAVA_OPTS="-Xms512m -Xmx2g -XX:+UseG1GC"
+```
+
+### PG-009 — Datasource pool size configuration
+**Category:** Persistence / Database  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+Connection pool size not explicitly configured.
+
+#### Why it matters
+
+Defaults may not fit workload.
+
+#### Remediation
+
+``` properties
+spring.datasource.hikari.maximum-pool-size=20
+```
+
+
+### PG-010 — HTTP request timeout configuration
+**Category:** Web / Performance  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+No configured HTTP request timeout.
+
+#### Why it matters
+Stuck requests exhaust resources.
+
+#### Remediation
+
+``` properties
+spring.mvc.async.request-timeout=30s
+server.connection-timeout=30s
+```
+
+### PG-011 — JPA Open Session In View configuration
+**Category:** Persistence  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+spring.jpa.open-in-view is enabled.
+
+#### Why it matters
+
+Masks inefficient queries.
+
+#### Remediation
+
+``` properties
+spring.jpa.open-in-view=false
+```
+
+
+### PG-012 — Graceful shutdown configuration
+**Category:** Runtime / Lifecycle  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+Graceful shutdown is disabled.
+
+#### Why it matters
+
+In-flight requests terminated abruptly.
+
+#### Remediation
+
+``` properties
+server.shutdown=graceful
+spring.lifecycle.timeout-per-shutdown-phase=30s
+```
+
+### PG-013 — CORS configuration scope
+**Category:** Web / Security  
+**Default Severity:** WARN  
+**Tier:** FREE
+
+#### What it checks
+CORS policy is overly permissive.
+
+#### Why it matters
+
+Enables cross-origin attacks.
+
+#### Remediation
+
+Restrict origins, methods, and headers.
+
+
+---
+
+
 ## PREMIUM checks (PG-201 … PG-209)
 
 PREMIUM checks validate effective runtime behavior by performing real HTTP/HTTPS requests against the running application.  
