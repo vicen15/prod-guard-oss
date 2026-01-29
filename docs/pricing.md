@@ -99,7 +99,7 @@ For professional teams running real production workloads.
 </ul>
 
 <p>
-<strong>Price:</strong> Contact for pricing
+<strong>Price:</strong> €1200
 </p>
 
 <hr/>
