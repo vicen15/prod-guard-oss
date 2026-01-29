@@ -1,7 +1,3 @@
----
-title: Checks
-layout: default
----
 
 ← [Back to index](index.md)
 
