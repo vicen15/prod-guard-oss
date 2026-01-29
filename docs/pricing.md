@@ -178,7 +178,6 @@ To request a license:
 
 <ul>
   <li>Provide licensee name</li>
-  <li>Select plan</li>
   <li>Choose validity period</li>
 </ul>
 
