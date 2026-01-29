@@ -1,3 +1,10 @@
+---
+title: Checks
+layout: default
+---
+
+← [Back to index](index.md)
+
 # ProdGuard Checks Catalog
 
 ## FREE checks (PG-001 … PG-013)
@@ -393,3 +400,7 @@ Weak COOP enables XS-Leaks and side-channel attacks.
 ```http
 Cross-Origin-Opener-Policy: same-origin
 ```
+
+- ← [Back to index](index.md)
+- → [Configuration](configuration.md)
+- → [Licensing](licensing.md)
