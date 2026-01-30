@@ -1,3 +1,8 @@
+---
+title: checks
+layout: default
+permalink: /checks/
+---
 
 ← [Back to index](index.md)
 
