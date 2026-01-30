@@ -417,13 +417,8 @@ This phase is **PREMIUM-only**.
 
 <h2>Next Steps</h2>
 
-<ul>
-  <li><a href="checks.md">Checks Reference</a></li>
-  <li><a href="licensing.md">Licensing Model</a></li>
-  <li><a href="configuration.md">Configuration</a></li>
-</ul>
-
 ← [Back to index](index.md)
-- [Checks Reference – full list of checks and tiers](checks)
+
+- [Checks Reference – full list of checks and tiers](/prod-guard-oss/checks/)
 - [Licensing – Free vs Premium model](licensing)
 - [Configuration – YAML / properties reference](configuration)
