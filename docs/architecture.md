@@ -1,3 +1,9 @@
+---
+title: Architecture
+layout: default
+permalink: /architecture/
+---
+
 <h1>Architecture Overview</h1>
 
 <p>

@@ -232,12 +232,12 @@ Integration requires:
 
 ## 📖 Documentation structure
 
-- <a href="getting-started.md">**Getting Started** – quick adoption guide</a>
-- [Checks Reference](checks)
-- <a href="licensing.md">**Licensing** – Free vs Premium model</a>
-- <a href="configuration.md">**Configuration** – YAML / properties reference</a>
-- <a href="architecture.md">**Architecture** – internal design and flow</a>
-- <a href="faq.md">**FAQ** – common questions and troubleshooting</a>
+- [Getting Started– quick adoption guide](getting-started)
+- [Checks Reference – full list of checks and tiers](checks)
+- [Licensing – Free vs Premium model](licensing)
+- [Configuration – YAML / properties reference](configuration)
+- [Architecture – internal design and flow](architecture)
+- [FAQ – common questions and troubleshooting](faq)
 
 ---
 
