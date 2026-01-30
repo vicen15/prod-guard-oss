@@ -1,3 +1,12 @@
+---
+title: Licensing
+layout: default
+permalink: /licensing/
+---
+
+← [Back to index](index.md)
+
+
 <h1>Licensing</h1>
 
 <p>
@@ -268,6 +277,13 @@ This licensing approach was chosen to align with production constraints:
 <hr/>
 
 <h2>Next Steps</h2>
+
+← [Back to index](index.md)
+
+- [Configuration – YAML / properties reference](configuration)
+- [Checks Reference – full list of checks and tiers](checks)
+- [Architecture – internal design and flow](architecture)
+
 
 <ul>
   <li><a href="configuration.md">Configuration</a></li>

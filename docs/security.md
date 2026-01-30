@@ -1,3 +1,12 @@
+---
+title: Security
+layout: default
+permalink: /security/
+---
+
+← [Back to index](index.md)
+
+
 <h1>Security</h1>
 
 <p>
@@ -282,6 +291,12 @@ It protects production environments without becoming another security liability.
 <hr/>
 
 <h2>Next Steps</h2>
+
+← [Back to index](index.md)
+
+- [Architecture – internal design and flow](architecture)
+- [Licensing – Free vs Premium model](licensing)
+- [FAQ – common questions and troubleshooting](faq)
 
 <ul>
   <li><a href="architecture.md">Architecture Overview</a></li>

@@ -1,3 +1,12 @@
+---
+title: Faq
+layout: default
+permalink: /faq/
+---
+
+← [Back to index](index.md)
+
+
 <h1>Frequently Asked Questions (FAQ)</h1>
 
 <p>
@@ -334,8 +343,8 @@ The check catalog is expected to grow, especially in:
 
 <h2>Next Steps</h2>
 
-<ul>
-  <li><a href="getting-started.md">Getting Started</a></li>
-  <li><a href="checks.md">Checks Reference</a></li>
-  <li><a href="licensing.md">Licensing Model</a></li>
-</ul>
+← [Back to index](index.md)
+
+- [Getting Started– quick adoption guide](getting-started)
+- [Checks Reference – full list of checks and tiers](checks)
+- [Licensing – Free vs Premium model](licensing)

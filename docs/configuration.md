@@ -1,3 +1,11 @@
+---
+title: Configuration
+layout: default
+permalink: /configuration/
+---
+
+← [Back to index](index.md)
+
 <h1>Configuration</h1>
 
 <p>
@@ -213,8 +221,8 @@ prodguard:
 
 <h2>Next Steps</h2>
 
-<ul>
-  <li><a href="checks.md">Checks Reference</a></li>
-  <li><a href="licensing.md">Licensing Model</a></li>
-  <li><a href="architecture.md">Architecture Overview</a></li>
-</ul>
+← [Back to index](index.md)
+
+- [Checks Reference – full list of checks and tiers](checks)
+- [Licensing – Free vs Premium model](licensing)
+- [Architecture – internal design and flow](architecture)

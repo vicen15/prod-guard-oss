@@ -1,3 +1,12 @@
+---
+title: Getting-started
+layout: default
+permalink: /getting-started/
+---
+
+← [Back to index](index.md)
+
+
 # Getting Started
 
 **Start protecting your Spring Boot application in minutes**
@@ -42,3 +51,6 @@ Add the prod-guard starter to your `pom.xml`:
     <artifactId>prod-guard-starter</artifactId>
     <version>0.0.1</version>
 </dependency>
+
+
+← [Back to index](index.md)

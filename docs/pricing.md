@@ -1,3 +1,12 @@
+---
+title: Pricing
+layout: default
+permalink: /pricing/
+---
+
+← [Back to index](index.md)
+
+
 <h1>Pricing</h1>
 
 <p>
@@ -189,8 +198,8 @@ You will receive a signed license file usable immediately.
 
 <h2>Next Steps</h2>
 
-<ul>
-  <li><a href="getting-started.md">Getting Started</a></li>
-  <li><a href="licensing.md">Licensing Model</a></li>
-  <li><a href="faq.md">FAQ</a></li>
-</ul>
+← [Back to index](index.md)
+
+- [Getting Started– quick adoption guide](getting-started)
+- [Licensing – Free vs Premium model](licensing)
+- [FAQ – common questions and troubleshooting](faq)

@@ -4,6 +4,8 @@ layout: default
 permalink: /architecture/
 ---
 
+← [Back to index](index.md)
+
 <h1>Architecture Overview</h1>
 
 <p>
@@ -420,3 +422,8 @@ This phase is **PREMIUM-only**.
   <li><a href="licensing.md">Licensing Model</a></li>
   <li><a href="configuration.md">Configuration</a></li>
 </ul>
+
+← [Back to index](index.md)
+- [Checks Reference – full list of checks and tiers](checks)
+- [Licensing – Free vs Premium model](licensing)
+- [Configuration – YAML / properties reference](configuration)
