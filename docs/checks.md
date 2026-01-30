@@ -403,5 +403,5 @@ Cross-Origin-Opener-Policy: same-origin
 ```
 
 - ← [Back to index](index.md)
-- → [Configuration](configuration.md)
-- → [Licensing](licensing.md)
+- → [Configuration](/prod-guard-oss/configuration.md)
+- → [Licensing](/prod-guard-oss/licensing.md)

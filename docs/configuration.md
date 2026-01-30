@@ -223,6 +223,6 @@ prodguard:
 
 ← [Back to index](index.md)
 
-- [Checks Reference – full list of checks and tiers](checks)
-- [Licensing – Free vs Premium model](licensing)
-- [Architecture – internal design and flow](architecture)
+- [Checks Reference – full list of checks and tiers](/prod-guard-oss/checks)
+- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
+- [Architecture – internal design and flow](/prod-guard-oss/architecture)

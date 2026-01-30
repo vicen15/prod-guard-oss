@@ -420,5 +420,5 @@ This phase is **PREMIUM-only**.
 ← [Back to index](index.md)
 
 - [Checks Reference – full list of checks and tiers](/prod-guard-oss/checks/)
-- [Licensing – Free vs Premium model](licensing)
-- [Configuration – YAML / properties reference](configuration)
+- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
+- [Configuration – YAML / properties reference](/prod-guard-oss/configuration)

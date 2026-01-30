@@ -294,12 +294,6 @@ It protects production environments without becoming another security liability.
 
 ← [Back to index](index.md)
 
-- [Architecture – internal design and flow](architecture)
-- [Licensing – Free vs Premium model](licensing)
-- [FAQ – common questions and troubleshooting](faq)
-
-<ul>
-  <li><a href="architecture.md">Architecture Overview</a></li>
-  <li><a href="licensing.md">Licensing Model</a></li>
-  <li><a href="faq.md">FAQ</a></li>
-</ul>
+- [Architecture – internal design and flow](/prod-guard-oss/architecture)
+- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
+- [FAQ – common questions and troubleshooting](/prod-guard-oss/faq)
