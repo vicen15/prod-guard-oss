@@ -280,6 +280,6 @@ This licensing approach was chosen to align with production constraints:
 
 ← [Back to index](index.md)
 
-- [Configuration – YAML / properties reference](/prod-guard-oss/configuration)
-- [Checks Reference – full list of checks and tiers](/prod-guard-oss/checks)
-- [Architecture – internal design and flow](/prod-guard-oss/architecture)
+- [Configuration – YAML / properties reference](/configuration)
+- [Checks Reference – full list of checks and tiers](/checks)
+- [Architecture – internal design and flow](/architecture)

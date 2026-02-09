@@ -294,6 +294,6 @@ It protects production environments without becoming another security liability.
 
 ← [Back to index](index.md)
 
-- [Architecture – internal design and flow](/prod-guard-oss/architecture)
-- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
-- [FAQ – common questions and troubleshooting](/prod-guard-oss/faq)
+- [Architecture – internal design and flow](/architecture)
+- [Licensing – Free vs Premium model](/licensing)
+- [FAQ – common questions and troubleshooting](/faq)

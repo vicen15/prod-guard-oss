@@ -211,5 +211,5 @@ All without modifying application code.
 
 ← [Back to index](index.md)
 - [Checks Reference – full list of checks and tiers](/checks)
-- [Licensing – Free vs Premium model](licensing)
-- [Configuration – YAML / properties reference](configuration)
+- [Licensing – Free vs Premium model](/licensing)
+- [Configuration – YAML / properties reference](/configuration)

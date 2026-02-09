@@ -276,7 +276,7 @@ If you care about reliability, prod-guard belongs in your startup path.
 
 ← [Back to index](index.md)
 
-- [Getting Started– quick adoption guide](/prod-guard-oss/getting-started)
-- [Checks Reference – full list of checks and tiers](/prod-guard-oss/checks)
-- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
+- [Getting Started– quick adoption guide](/getting-started)
+- [Checks Reference – full list of checks and tiers](/checks)
+- [Licensing – Free vs Premium model](/licensing)
 
