@@ -200,6 +200,6 @@ You will receive a signed license file usable immediately.
 
 ← [Back to index](index.md)
 
-- [Getting Started– quick adoption guide](/prod-guard-oss/getting-started)
-- [Licensing – Free vs Premium model](/prod-guard-oss/licensing)
-- [FAQ – common questions and troubleshooting](/prod-guard-oss/faq)
+- [Getting Started– quick adoption guide](/getting-started)
+- [Licensing – Free vs Premium model](/licensing)
+- [FAQ – common questions and troubleshooting](/faq)
