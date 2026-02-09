@@ -182,7 +182,7 @@ prod-guard pricing is:
 <h2>Getting a License</h2>
 
 <p>
-To request a license:
+To request a license: licensing@prod-guard.com
 </p>
 
 <ul>
