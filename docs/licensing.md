@@ -283,3 +283,4 @@ This licensing approach was chosen to align with production constraints:
 - [Configuration – YAML / properties reference](/configuration)
 - [Checks Reference – full list of checks and tiers](/checks)
 - [Architecture – internal design and flow](/architecture)
+- [Pricing – Price and how to get license](/pricing)

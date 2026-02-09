@@ -238,6 +238,7 @@ Integration requires:
 - [Configuration – YAML / properties reference](configuration)
 - [Architecture – internal design and flow](architecture)
 - [FAQ – common questions and troubleshooting](faq)
+- [Pricing – Price and how to get license](pricing)
 
 ---
 
