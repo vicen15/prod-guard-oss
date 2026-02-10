@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.prodguard</groupId>
+    <groupId>com.prod-guard</groupId>
     <artifactId>spring-boot-prod-guard</artifactId>
     <version>0.0.1</version>
   </parent>
@@ -11,12 +11,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.prodguard</groupId>
+      <groupId>com.prod-guard</groupId>
       <artifactId>prod-guard-starter</artifactId>
       <version>${project.version}</version>
     </dependency>
 	<dependency>
-	  <groupId>com.prodguard</groupId>
+	  <groupId>com.prod-guard</groupId>
 	  <artifactId>prod-guard-checks-free</artifactId>
 	  <version>${project.version}</version>
 	</dependency>

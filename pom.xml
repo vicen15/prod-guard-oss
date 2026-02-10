@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0          http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.prodguard</groupId>
+  <groupId>com.prod-guard</groupId>
   <artifactId>spring-boot-prod-guard</artifactId>
+  <name>Spring Boot prod guard</name>
+  <description>Spring Boot prod guard</description>
+  <url>https://github.com/vicen15/spring-boot-prod-guard</url>  
   <version>0.0.1</version>
   <packaging>pom</packaging>
   <modules>
     <module>prod-guard-core</module>
     <module>prod-guard-starter</module>
-    <module>example-app</module>
     <module>prod-guard-checks-free</module>
   </modules>
   <properties>
     <java.version>23</java.version>
     <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
     <spring.boot.version>3.3.1</spring.boot.version>
+	<maven.deploy.skip>true</maven.deploy.skip>
+	<gpg.skip>true</gpg.skip>
   </properties>
+  
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>vicen15</id>
+      <name>Vicente Lopez</name>
+      <email>vicentelf15@gmail.com</email>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/vicen15/spring-boot-prod-guard.git</connection>
+    <developerConnection>scm:git:ssh://github.com/vicen15/spring-boot-prod-guard.git</developerConnection>
+    <url>https://github.com/vicen15/spring-boot-prod-guard</url>
+    <tag>HEAD</tag>
+  </scm>  
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -26,6 +54,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  
   <build>
     <pluginManagement>
       <plugins>
@@ -39,5 +68,68 @@
         </plugin>
       </plugins>
     </pluginManagement>
+	<plugins>
+	  <plugin>
+	    <groupId>org.sonatype.central</groupId>
+	    <artifactId>central-publishing-maven-plugin</artifactId>
+	    <version>0.4.0</version>
+	    <extensions>true</extensions>
+	    <configuration>
+	      <publishingServerId>maven_central</publishingServerId>
+	      <autoPublish>true</autoPublish>
+	    </configuration>
+	  </plugin>
+	
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-gpg-plugin</artifactId>
+		<version>3.2.8</version>
+		<executions>
+		  <execution>
+		    <id>sign-artifacts</id>
+		    <phase>verify</phase>
+		    <goals>
+		      <goal>sign</goal>
+		    </goals>
+		    <configuration>
+		      <!-- no firmar el parent -->
+		      <skip>${project.packaging == 'pom'}</skip>
+		      <!-- ruta al gpg portable -->
+		      <executable>C:\\vicente\\Software\\gnupg-portable-win32-2.4.3-12\\app\\bin\\gpg.exe</executable>
+		      <gpgArguments>
+		        <arg>--pinentry-mode</arg>
+		        <arg>loopback</arg>
+		      </gpgArguments>
+		    </configuration>
+		  </execution>
+		</executions>
+	  </plugin>
+
+	  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-source-plugin</artifactId>
+  		<executions>
+    	  <execution>
+      	    <id>attach-sources</id>
+      	    <goals>
+        	  <goal>jar-no-fork</goal>
+      	    </goals>
+    	  </execution>
+  		</executions>
+	 </plugin>
+	
+	 <plugin>
+  		<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-javadoc-plugin</artifactId>
+  		<executions>
+    	  <execution>
+      		<id>attach-javadocs</id>
+      		<goals>
+        	  <goal>jar</goal>
+      		</goals>
+    	 </execution>
+  		</executions>
+	</plugin>
+	</plugins>
   </build>
 </project>

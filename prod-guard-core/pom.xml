@@ -1,8 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-
+  <name>Prod Guard Core</name>
+  <description>Core</description>
+  <url>https://github.com/vicen15/spring-boot-prod-guard</url>
+  <properties>
+    <gpg.skip>false</gpg.skip>
+  </properties>  
   <parent>
-    <groupId>com.prodguard</groupId>
+    <groupId>com.prod-guard</groupId>
     <artifactId>spring-boot-prod-guard</artifactId>
     <version>0.0.1</version>
   </parent>
