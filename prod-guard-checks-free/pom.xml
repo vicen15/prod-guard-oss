@@ -3,21 +3,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.prodguard</groupId>
+    <groupId>com.prod-guard</groupId>
     <artifactId>spring-boot-prod-guard</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
-  <groupId>com.prodguard</groupId>
+  <groupId>com.prod-guard</groupId>
   <artifactId>prod-guard-checks-free</artifactId>
-  <version>0.0.1</version>
-  <name>prod-guard-checks-free</name>
-  <url>http://maven.apache.org</url>
+  <version>1.0.0</version>
+  <name>Prod Guard checks free</name>
+  <description>free cheks</description>
+  <url>https://github.com/vicen15/spring-boot-prod-guard</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gpg.skip>false</gpg.skip>
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.prodguard</groupId>
+      <groupId>com.prod-guard</groupId>
       <artifactId>prod-guard-core</artifactId>
       <version>${project.version}</version>
     </dependency>

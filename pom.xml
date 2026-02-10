@@ -5,7 +5,7 @@
   <name>Spring Boot prod guard</name>
   <description>Spring Boot prod guard</description>
   <url>https://github.com/vicen15/spring-boot-prod-guard</url>  
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
   <modules>
     <module>prod-guard-core</module>
