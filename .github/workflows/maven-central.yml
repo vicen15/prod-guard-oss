@@ -25,8 +25,7 @@ jobs:
           gpg-passphrase: GPG_PASSPHRASE
 
       - name: Deploy
-        run: mvn -B deploy -P release
+        run: mvn -B -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} deploy
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
