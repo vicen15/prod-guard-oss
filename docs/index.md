@@ -239,6 +239,7 @@ Integration requires:
 - [Architecture – internal design and flow](architecture)
 - [FAQ – common questions and troubleshooting](faq)
 - [Pricing – Price and how to get license](pricing)
+- [Contact – contacts](contact)
 
 ---
 
