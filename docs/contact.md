@@ -1,7 +1,7 @@
 ---
-title: Licensing
+title: Contact
 layout: default
-permalink: /licensing/
+permalink: /contact/
 ---
 
 ← [Back to index](index.md)
