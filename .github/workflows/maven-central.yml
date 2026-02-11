@@ -10,6 +10,11 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     environment: prod-guard
+    env:
+      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      SONATYPE_CENTRAL_USERNAME: ${{ secrets.SONATYPE_CENTRAL_USERNAME }}
+      SONATYPE_CENTRAL_PASSWORD: ${{ secrets.SONATYPE_CENTRAL_PASSWORD }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,13 +25,10 @@ jobs:
           distribution: temurin
           java-version: 17
           server-id: maven_central
-          server-username: CENTRAL_USERNAME
-          server-password: CENTRAL_PASSWORD
+          server-username: SONATYPE_CENTRAL_USERNAME
+          server-password: SONATYPE_CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
 
       - name: Deploy
         run: mvn -B -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} deploy
-        env:
-          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
-          CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
