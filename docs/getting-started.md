@@ -78,9 +78,13 @@ During startup, prod-guard automatically activates.
 Typical output:
 
 [prod-guard] discovered 13 checks
+
 [prod-guard] executing 13 checks
+
 [prod-guard] WARN PG-012 - Graceful shutdown is not enabled
+
 [prod-guard] WARN PG-011 - JPA Open Session In View is enabled
+
 [prod-guard] 2 issues detected (blocking: false)
 
 What this means
