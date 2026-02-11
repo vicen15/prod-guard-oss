@@ -14,7 +14,7 @@
   
   <name>Prod Guard starter</name>
   <description>starter</description>
-  <url>https://github.com/vicen15/spring-boot-prod-guard</url>
+  <url>www.prod-guard.com</url>
 
   <artifactId>prod-guard-starter</artifactId>
   <packaging>jar</packaging>

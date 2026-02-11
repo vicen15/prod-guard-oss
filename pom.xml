@@ -3,8 +3,8 @@
   <groupId>com.prod-guard</groupId>
   <artifactId>spring-boot-prod-guard</artifactId>
   <name>Spring Boot prod guard</name>
-  <description>Spring Boot prod guard</description>
-  <url>https://github.com/vicen15/spring-boot-prod-guard</url>  
+  <description>Production readiness and security guardrails for Spring Boot</description>
+  <url>www.prod-guard.com</url>  
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <modules>
@@ -95,7 +95,7 @@
 		      <!-- no firmar el parent -->
 		      <skip>${project.packaging == 'pom'}</skip>
 		      <!-- ruta al gpg portable -->
-		      <!--executable>C:\\vicente\\Software\\gnupg-portable-win32-2.4.3-12\\app\\bin\\gpg.exe</executable-->
+		      <executable>C:\\vicente\\Software\\gnupg-portable-win32-2.4.3-12\\app\\bin\\gpg.exe</executable>
 		      <gpgArguments>
 		        <arg>--pinentry-mode</arg>
 		        <arg>loopback</arg>

@@ -12,8 +12,8 @@
   <artifactId>prod-guard-checks-free</artifactId>
   <version>1.0.0</version>
   <name>Prod Guard checks free</name>
-  <description>free cheks</description>
-  <url>https://github.com/vicen15/spring-boot-prod-guard</url>
+  <description>FREE checks focus on baseline production readiness and hygiene.</description>
+  <url>www.prod-guard.com</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gpg.skip>false</gpg.skip>
