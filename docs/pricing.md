@@ -108,7 +108,7 @@ For professional teams running real production workloads.
 </ul>
 
 <p>
-<strong>Price:</strong> €1000
+<strong>Price:</strong> €1000 per year
 </p>
 
 <hr/>
