@@ -95,7 +95,7 @@
 		      <!-- no firmar el parent -->
 		      <skip>${project.packaging == 'pom'}</skip>
 		      <!-- ruta al gpg portable -->
-		      <executable>C:\\vicente\\Software\\gnupg-portable-win32-2.4.3-12\\app\\bin\\gpg.exe</executable>
+		      <!--executable>C:\\vicente\\Software\\gnupg-portable-win32-2.4.3-12\\app\\bin\\gpg.exe</executable-->
 		      <gpgArguments>
 		        <arg>--pinentry-mode</arg>
 		        <arg>loopback</arg>
