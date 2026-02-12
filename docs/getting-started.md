@@ -49,7 +49,7 @@ Add the prod-guard starter to your `pom.xml`:
 <dependency>
     <groupId>com.prodguard</groupId>
     <artifactId>prod-guard-starter</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
