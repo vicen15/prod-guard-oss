@@ -243,7 +243,7 @@ Restrict origins, methods, and headers.
 ---
 
 
-## PREMIUM checks (PG-201 … PG-209)
+## PREMIUM checks (PG-201 … PG-212)
 
 PREMIUM checks validate effective runtime behavior by performing real HTTP/HTTPS requests against the running application.  
 They account for filters, reverse proxies, and load balancers.  
