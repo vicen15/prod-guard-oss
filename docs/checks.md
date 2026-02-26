@@ -402,6 +402,62 @@ Weak COOP enables XS-Leaks and side-channel attacks.
 Cross-Origin-Opener-Policy: same-origin
 ```
 
+### PG-210 – Effective server technology disclosure
+
+**Severity:** WARN
+**Tier:** PREMIUM  
+
+#### What it checks
+
+Detects version strings in the Server header (e.g. Apache/2.4.51, nginx/1.25, Tomcat/10.1) and flags the presence of X-Powered-By unconditionally, regardless of its value.
+
+#### Why it matters
+
+Exposing server software versions gives attackers precise information to search for known CVEs targeting your exact stack. Even without a version, X-Powered-By unnecessarily reveals the underlying technology.
+
+#### Remediation
+
+Set server.server-header to an empty value in your application configuration to suppress the Server header. Disable X-Powered-By by configuring Spring Security headers or removing it at the reverse proxy level.
+
+
+### PG-211 – Effective Actuator endpoint exposure
+    
+**Severity:** ERROR
+**Tier:** PREMIUM
+
+#### What it checks
+
+Sends requests to /actuator/env, /actuator/heapdump, /actuator/shutdown, /actuator/beans and /actuator/mappings. Any endpoint returning HTTP 200 without authentication is reported.
+
+#### Why it matters
+
+Exposed Actuator endpoints can leak environment variables including secrets, allow full heap memory dumps, reveal internal bean wiring, or enable remote shutdown of the application.
+
+#### Remediation
+
+Restrict the exposed endpoints to only health and info via management.endpoints.web.exposure.include. Protect the actuator path with Spring Security requiring an ADMIN role, or move the management port to an internal-only network interface using management.server.port.
+
+### PG-212 – Effective TLS certificate expiry
+
+**Severity:** ERROR
+**Tier:** PREMIUM
+
+Verifies that the TLS certificate served by the application is not expired or about to expire.
+
+This check performs a real TLS handshake against the running application and inspects the server certificate's expiry date.
+
+### What it checks
+
+Inspects the X.509 certificate presented during the TLS handshake. Raises a warning when expiry is within 30 days and an error when within 7 days or already expired.
+
+### Why it matters
+
+An expired certificate causes all browsers and HTTP clients to reject the connection entirely, resulting in a complete production outage. Certificate expiry is one of the most preventable yet common causes of downtime.
+
+### Remediation
+
+Renew the certificate before it expires. For Let's Encrypt, configure automatic renewal via certbot renew. For embedded keystores, replace the keystore.p12 file with the renewed certificate and restart the application. ProdGuard emits a WARN 30 days before expiry giving enough lead time to act before it escalates to ERROR.
+
 - ← [Back to index](index.md)
 - → [Configuration](/configuration) 
 - → [Licensing](/licensing)
