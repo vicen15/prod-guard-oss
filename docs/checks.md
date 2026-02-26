@@ -399,7 +399,7 @@ Cross-Origin-Opener-Policy: same-origin
 
 ### PG-210 – Effective server technology disclosure
 
-**Severity:** WARN
+**Severity:** WARN  
 **Tier:** PREMIUM  
 
 #### What it checks
@@ -417,7 +417,7 @@ Set server.server-header to an empty value in your application configuration to 
 
 ### PG-211 – Effective Actuator endpoint exposure
     
-**Severity:** ERROR
+**Severity:** ERROR  
 **Tier:** PREMIUM
 
 #### What it checks
@@ -434,7 +434,7 @@ Restrict the exposed endpoints to only health and info via management.endpoints.
 
 ### PG-212 – Effective TLS certificate expiry
 
-**Severity:** ERROR
+**Severity:** ERROR  
 **Tier:** PREMIUM
 
 Verifies that the TLS certificate served by the application is not expired or about to expire.
