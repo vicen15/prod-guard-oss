@@ -446,15 +446,15 @@ Verifies that the TLS certificate served by the application is not expired or ab
 
 This check performs a real TLS handshake against the running application and inspects the server certificate's expiry date.
 
-### What it checks
+#### What it checks
 
 Inspects the X.509 certificate presented during the TLS handshake. Raises a warning when expiry is within 30 days and an error when within 7 days or already expired.
 
-### Why it matters
+#### Why it matters
 
 An expired certificate causes all browsers and HTTP clients to reject the connection entirely, resulting in a complete production outage. Certificate expiry is one of the most preventable yet common causes of downtime.
 
-### Remediation
+#### Remediation
 
 Renew the certificate before it expires. For Let's Encrypt, configure automatic renewal via certbot renew. For embedded keystores, replace the keystore.p12 file with the renewed certificate and restart the application. ProdGuard emits a WARN 30 days before expiry giving enough lead time to act before it escalates to ERROR.
 
