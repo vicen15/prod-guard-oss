@@ -15,8 +15,6 @@ FREE checks focus on baseline production readiness and hygiene. They are safe to
 ---
 
 ### PG-001 — Root logging level configuration
-
-**Category:** Logging / Observability  
 **Default Severity:** ERROR  
 **Tier:** FREE  
 
@@ -35,8 +33,6 @@ logging.level.com.myapp=DEBUG
 ---
 
 ### PG-002 — JPA SQL logging configuration
-
-**Category:** Persistence / Observability  
 **Default Severity:** WARN  
 **Tier:** FREE  
 
@@ -56,7 +52,6 @@ spring.jpa.properties.hibernate.format_sql=false
 
 ### PG-003 — Error response stacktrace exposure
 
-**Category:** Security / Web  
 **Default Severity:** ERROR  
 **Tier:** FREE  
 
@@ -74,7 +69,7 @@ server.error.include-stacktrace=never
 ---
 
 ### PG-004 — Spring Boot Actuator endpoint exposure
-**Category:** Observability / Security  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -91,7 +86,7 @@ management.endpoint.health.show-details=never
 ```
 
 ### PG-005 — HTTPS / TLS configuration
-**Category:** Security  
+
 **Default Severity:** ERROR  
 **Tier:** FREE
 
@@ -109,7 +104,7 @@ server.port=8443
 ```
 
 ### PG-006 — HTTP security headers infrastructure
-**Category:** Security / HTTP  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -123,7 +118,7 @@ Missing headers make the app more vulnerable to clickjacking, MIME sniffing, and
 Configure strict security headers in framework or proxy.
 
 ### PG-007 — CSRF protection configuration review
-**Category:** Security / Web  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -137,7 +132,7 @@ CSRF vulnerabilities allow attackers to execute actions on behalf of authenticat
 Enable CSRF or explicitly document safe exceptions.
 
 ### PG-008 — JVM maximum heap size configuration
-**Category:** Runtime / JVM  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -154,7 +149,7 @@ JAVA_OPTS="-Xms512m -Xmx2g -XX:+UseG1GC"
 ```
 
 ### PG-009 — Datasource pool size configuration
-**Category:** Persistence / Database  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -173,7 +168,7 @@ spring.datasource.hikari.maximum-pool-size=20
 
 
 ### PG-010 — HTTP request timeout configuration
-**Category:** Web / Performance  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -191,7 +186,7 @@ server.connection-timeout=30s
 ```
 
 ### PG-011 — JPA Open Session In View configuration
-**Category:** Persistence  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
@@ -210,7 +205,7 @@ spring.jpa.open-in-view=false
 
 
 ### PG-012 — Graceful shutdown configuration
-**Category:** Runtime / Lifecycle  
+
 **Default Severity:** WARN  
 **Tier:** FREE
 
